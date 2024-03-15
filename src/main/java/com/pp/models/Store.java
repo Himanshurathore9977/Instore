@@ -1,26 +1,25 @@
 package com.pp.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "Store", uniqueConstraints = { @UniqueConstraint(columnNames = { "storeName", "countryISO" }) })
+@Entity(name = "store")
+@Table(name = "store", uniqueConstraints = { @UniqueConstraint(columnNames = { "storeName", "countryISO" }) })
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Store extends CreatedDate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "storeID")
-    private int storeID;
+    private Long  storeID;
 
-    @Column(name = "storeName" , unique = true)
+    @Column(name = "storeName")
     private String storeName;
 
     @Column(name = "location")
@@ -29,7 +28,7 @@ public class Store extends CreatedDate {
     @Column(name = "city")
     private String city;
 
-    @Column(name = "countryISO")
+    @Column(name = "countryISO", length = 3)
     private String countryISO;
 
     @Column(name = "about")

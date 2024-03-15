@@ -29,7 +29,9 @@ public class StoreCreateRequest {
 
     private String about;
 
+
     private boolean activeStore;
+
 
     @NotNull(message = "Please provide merchant Id ")
     private long merchantID;

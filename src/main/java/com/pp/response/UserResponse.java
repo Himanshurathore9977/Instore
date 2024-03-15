@@ -17,7 +17,7 @@ public class UserResponse {
     private String email;
     private String mobileNumber;
     private String identityNumber;
-    private String country;
-    private Boolean activeUser;
+    private String countryISO;
+    private boolean activeUser;
     private Long merchantID;
 }

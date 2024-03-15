@@ -14,6 +14,8 @@ import com.pp.util.ConstantMessages;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Setter
 @Getter
@@ -25,23 +27,23 @@ public class CreatedDate implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "dateCreated", nullable = false)
 	@JsonFormat(pattern = ConstantMessages.DATE_TIME_FORMATE, timezone =  ConstantMessages.INDIAN_TIME_ZONE_CODE)
-	//@CreationTimestamp
+	@CreationTimestamp
 	private Date dateCreated;
 	
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "dateModified", nullable = false)
 	@JsonFormat(pattern = ConstantMessages.DATE_TIME_FORMATE, timezone =  ConstantMessages.INDIAN_TIME_ZONE_CODE)
-	//@UpdateTimestamp
+	@UpdateTimestamp
 	private Date dateModified;
 	
-	@PrePersist
-    public void onCreate() {
-        this.dateCreated = this.dateModified = new Date();
-    }
-
-    @PreUpdate
-    public void onUpdate() {
-        this.dateModified = new Date();
-    }
+//	@PrePersist
+//    public void onCreate() {
+//        this.dateCreated = this.dateModified = new Date();
+//    }
+//
+//    @PreUpdate
+//    public void onUpdate() {
+//        this.dateModified = new Date();
+//    }
 }

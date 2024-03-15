@@ -45,7 +45,6 @@ public class UserService {
             value = new Random().nextLong();
         }
         user.setIdentityNumber(value) ;
-
         userRepository.save(user);
         var userResponse = modelMapper.map(user, UserResponse.class);
         return Response.successfulResponse("User Created Successfully", userResponse);
@@ -53,7 +52,6 @@ public class UserService {
 
 
      public Response<User> getUserById(long userId) throws InstoreApplicationExceptions {
-
          var user = userRepository.findById(userId).orElseThrow(() -> new InstoreApplicationExceptions("User not found with id"));
          return Response.successfulResponse(ConstantMessages.USER_FETCH_SUCCESSFULLY, user);
      }
@@ -63,8 +61,6 @@ public class UserService {
          List<UserResponse> userResponses = user.stream().map(us -> modelMapper.map(us, UserResponse.class)).collect(Collectors.toList());
          return Response.successfulResponse(200, "Retrieved Successfully ", userResponses);
      }
-
-
 
 
     public Response<UserResponse> updateUser(Long userId  , UserUpdateRequest userUpdateRequest) throws InstoreApplicationExceptions {
@@ -87,7 +83,7 @@ public class UserService {
 
 
         existingUser.setMobileNumber(userUpdateRequest.getMobileNumber());
-        existingUser.setCountry(userUpdateRequest.getCountry());
+        existingUser.setCountryISO(userUpdateRequest.getCountryISO());
         existingUser.setResetPassword(userUpdateRequest.getPassword());
 
         User updatedUser = userRepository.save(existingUser);

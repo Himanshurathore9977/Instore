@@ -17,6 +17,7 @@ import javax.validation.constraints.*;
 public class UserCreateRequest {
 
     private Roles role;
+
     @NotBlank(message = "please provide full name properly")
     private String fullName;
 
@@ -24,13 +25,17 @@ public class UserCreateRequest {
     private String userName;
 
     @Email(message = "Please enter a valid email Id")
-    @NotNull(message = "Email cannot be NULL")
+    @NotBlank(message = "Email cannot be NULL")
     private String email;
 
     @NotEmpty(message = "Please provide proper emailId "  )
     @Size(min = 10 , max = 10 , message = "Please Enter 10 digit Mobile Number")
     private String mobileNumber;
-    private String country;
+
+
+    private String countryISO;
+
     private String password;
+
     private Long merchantID;
 }

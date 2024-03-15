@@ -30,9 +30,9 @@ public class UserController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<Response<User>> getUser(@PathVariable Long userId) throws InstoreApplicationExceptions {
-        var response = userService.getUserById(userId);
+    @GetMapping("/{id}")
+    public ResponseEntity<Response<User>> getUser(@PathVariable Long id) throws InstoreApplicationExceptions {
+        var response = userService.getUserById(id);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
@@ -42,16 +42,15 @@ public class UserController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
-
     @PutMapping("/{id}")
     public ResponseEntity<Response<UserResponse>> updateUser(@PathVariable Long id, @RequestBody @Valid UserUpdateRequest userUpdateRequest) throws InstoreApplicationExceptions, IllegalAccessException {
-        var response =  userService.updateUser(id , userUpdateRequest);
+        var response =  userService.updateUser(id, userUpdateRequest);
         return ResponseEntity.status(response.getStatusCode()).body(response) ;
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Response<UserResponse>> deleteUser(@PathVariable Long id) throws InstoreApplicationExceptions  {
-        var response =  userService.deleteUser(id );
+        var response =  userService.deleteUser(id);
         return ResponseEntity.status(response.getStatusCode()).body(response) ;
     }
 }

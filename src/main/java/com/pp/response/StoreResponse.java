@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StoreResponse {
-
+    private Long storeID;
     private String storeName;
     private String location;
     private String city;

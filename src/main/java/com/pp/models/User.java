@@ -17,7 +17,7 @@ public class User  extends CreatedDate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userID;
+    private Long userID;
 
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -35,11 +35,11 @@ public class User  extends CreatedDate {
     @Column(name = "mobileNumber", unique = true, nullable = false)
     private String mobileNumber;
 
-    @Column(name = "country", nullable = false)
-    private String country;
+    @Column(name = "countryISO", nullable = false, length = 3)
+    private String countryISO;
 
     @Column(name = "activeUser")
-    private boolean activeUser;
+    private boolean activeUser = true ;
 
     @JsonIgnore
     @Column(name = "password")
